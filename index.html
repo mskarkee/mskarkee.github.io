@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahesh Karki | Nepal Police ASI & IT Professional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --accent: #f59e0b;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bfdbfe 100%);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating Animation */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Pulse Animation */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Rotate Animation */
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .rotate {
+            animation: rotate 20s linear infinite;
+        }
+        
+        /* Wave Animation */
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            10% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            30% { transform: rotate(14deg); }
+            40% { transform: rotate(-4deg); }
+            50% { transform: rotate(10deg); }
+            60% { transform: rotate(0deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        .wave {
+            display: inline-block;
+            animation: wave 2.5s infinite;
+            transform-origin: 70% 70%;
+        }
+        
+        /* Glow Effect */
+        .glow {
+            box-shadow: 0 0 15px rgba(37, 99, 235, 0.5);
+            transition: box-shadow 0.3s ease;
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 25px rgba(37, 99, 235, 0.8);
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 4px;
+        }
+        
+        /* Profile Image Frame */
+        .profile-frame {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.5s ease;
+        }
+        
+        .profile-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.3) 0%, rgba(245, 158, 11, 0.3) 100%);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .profile-frame:hover::before {
+            opacity: 1;
+        }
+        
+        .profile-frame:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+        }
+        
+        /* Skill Badge Animation */
+        .skill-badge {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-badge::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: all 0.5s ease;
+        }
+        
+        .skill-badge:hover::after {
+            left: 100%;
+        }
+        
+        /* Timeline Animation */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .timeline-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 4px var(--primary);
+        }
+        
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 24px;
+            height: calc(100% - 24px);
+            width: 2px;
+            background: var(--primary);
+        }
+        
+        /* Section Title Animation */
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        
+        .section-title.active::after {
+            transform: scaleX(1);
+        }
+        
+        /* Button Hover Effect */
+        .btn-hover {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn-hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: width 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn-hover:hover::before {
+            width: 100%;
+        }
+        
+        /* Floating Particles */
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(37, 99, 235, 0.1);
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg"></div>
+    
+    <!-- Floating Particles -->
+    <div id="particles"></div>
+    
+    <!-- Navigation -->
+    <nav class="bg-white/80 backdrop-blur-md shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xl">MK</div>
+                    <span class="text-xl font-bold text-gray-800">Mahesh Karki</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative active-nav">Home</a>
+                    <a href="#about" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">About</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">Skills</a>
+                    <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">Experience</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menuBtn" class="text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white/90 backdrop-blur-md py-2 px-4 shadow-lg">
+            <a href="#home" class="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition">Home</a>
+            <a href="#about" class="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition">About</a>
+            <a href="#skills" class="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition">Skills</a>
+            <a href="#experience" class="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition">Experience</a>
+            <a href="#contact" class="block py-3 px-4 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative py-20 md:py-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0 relative z-10">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800 leading-tight">
+                    Hi<span class="wave">👋</span>, I'm <span class="text-blue-600">Mahesh Karki</span>
+                </h1>
+                <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700">
+                    <span class="inline-block mr-2">Nepal Police</span>
+                    <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm md:text-base">Assistant Sub-Inspector</span>
+                    <span class="inline-block ml-2">&</span>
+                    <span class="inline-block ml-2">IT Professional</span>
+                </h2>
+                <p class="text-lg text-gray-600 mb-8 max-w-lg">
+                    Dedicated professional with expertise in law enforcement and technology. Passionate about serving the community and leveraging digital skills for positive impact.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 shadow-lg btn-hover flex items-center">
+                        <i class="fas fa-paper-plane mr-2"></i> Contact Me
+                    </a>
+                    <a href="#about" class="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition duration-300 flex items-center">
+                        <i class="fas fa-user mr-2"></i> About Me
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center relative z-10">
+                <div class="profile-frame w-72 h-72 md:w-80 md:h-80 floating">
+                    <img src="c://Downloads/image.png" alt="Mahesh Karki" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-4 text-white">
+                        <div class="flex items-center justify-center space-x-2">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>Nepal Police ASI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-20 left-10 w-16 h-16 rounded-full bg-blue-400/20 blur-xl animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-24 h-24 rounded-full bg-orange-400/20 blur-xl animate-pulse delay-300"></div>
+        <div class="absolute top-1/3 right-1/4 w-20 h-20 rounded-full bg-blue-600/10 blur-lg animate-pulse delay-700"></div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white/80 backdrop-blur-sm relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 text-gray-800 section-title">
+                About Me
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="relative">
+                    <div class="bg-white rounded-xl shadow-lg p-6 lg:p-8 hover:shadow-xl transition duration-300 glow">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2 border-gray-200">Personal Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex flex-col sm:flex-row">
+                                <div class="w-full sm:w-1/3 font-medium text-gray-600">Full Name:</div>
+                                <div class="w-full sm:w-2/3 text-gray-800 font-medium">Mahesh Karki</div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row">
+                                <div class="w-full sm:w-1/3 font-medium text-gray-600">Date of Birth:</div>
+                                <div class="w-full sm:w-2/3 text-gray-800">2056/12/21 (2000/04/03)</div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row">
+                                <div class="w-full sm:w-1/3 font-medium text-gray-600">Nationality:</div>
+                                <div class="w-full sm:w-2/3 text-gray-800">Nepali</div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row">
+                                <div class="w-full sm:w-1/3 font-medium text-gray-600">Gender:</div>
+                                <div class="w-full sm:w-2/3 text-gray-800">Male</div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row">
+                                <div class="w-full sm:w-1/3 font-medium text-gray-600">Marital Status:</div>
+                                <div class="w-full sm:w-2/3 text-gray-800">Unmarried</div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row">
+                                <div class="w-full sm:w-1/3 font-medium text-gray-600">Religion:</div>
+                                <div class="w-full sm:w-2/3 text-gray-800">Hindu</div>
+                            </div>
+                            <div class="flex flex-col sm:flex-row">
+                                <div class="w-full sm:w-1/3 font-medium text-gray-600">Blood Group:</div>
+                                <div class="w-full sm:w-2/3 text-gray-800">B-ve</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-blue-100/50 blur-3xl -z-10"></div>
+                </div>
+                
+                <div class="relative">
+                    <div class="bg-white rounded-xl shadow-lg p-6 lg:p-8 hover:shadow-xl transition duration-300 glow">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800 border-b pb-2 border-gray-200">Address & Contact</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="font-medium text-gray-600 mb-1">Permanent Address:</div>
+                                <div class="text-gray-800">Dharmadevi Municipality - 6, Sankhuwasabha</div>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-600 mb-1">Temporary Address:</div>
+                                <div class="text-gray-800">Sundarharaincha, Biratchowk, Morang</div>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-600 mb-1">Contact Numbers:</div>
+                                <div class="text-gray-800">+977 9812308668, +977 9867813242</div>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-600 mb-1">Email:</div>
+                                <div class="text-gray-800">karkimahesh323@gmail.com</div>
+                            </div>
+                            <div>
+                                <div class="font-medium text-gray-600 mb-1">Languages Known:</div>
+                                <div class="text-gray-800">Nepali, Hindi and English (Can Read, Write and Speak)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute -top-10 -left-10 w-40 h-40 rounded-full bg-orange-100/50 blur-3xl -z-10"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50/80 backdrop-blur-sm relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 text-gray-800 section-title">
+                My Skills
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Creative Skills -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow transform hover:-translate-y-2">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Creative Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Photo Editing</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Video Editing</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Ad Design</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Content Creation</span>
+                    </div>
+                </div>
+                
+                <!-- Office Skills -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow transform hover:-translate-y-2">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Office Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">MS Word</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">MS Excel</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">PowerPoint</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Tally</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Photoshop</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Illustrator</span>
+                    </div>
+                </div>
+                
+                <!-- Digital Skills -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow transform hover:-translate-y-2">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Digital Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Social Media Management</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Website Management</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">IT Knowledge</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Digital Marketing</span>
+                    </div>
+                </div>
+                
+                <!-- Language Skills -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow transform hover:-translate-y-2">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-language"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Language Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Nepali (Fluent)</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Hindi (Fluent)</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">English (Proficient)</span>
+                    </div>
+                </div>
+                
+                <!-- Professional Skills -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow transform hover:-translate-y-2">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Professional Skills</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Law Enforcement</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Public Safety</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Team Leadership</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Crisis Management</span>
+                    </div>
+                </div>
+                
+                <!-- Personal Skills -->
+                <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow transform hover:-translate-y-2">
+                    <div class="text-blue-600 text-4xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Personal Attributes</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Disciplined</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Dedicated</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Adaptable</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Problem Solver</span>
+                        <span class="skill-badge bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-medium">Quick Learner</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-blue-400/10 blur-xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-40 h-40 rounded-full bg-orange-400/10 blur-xl animate-pulse delay-300"></div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white/80 backdrop-blur-sm relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 text-gray-800 section-title">
+                My Experience
+            </h2>
+            
+            <div class="relative">
+                <!-- Current Position -->
+                <div class="timeline-item active">
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-shield-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800 mb-1">Nepal Police</h4>
+                                <p class="text-blue-600 font-medium mb-2">Assistant Sub-Inspector (Current Position)</p>
+                                <p class="text-gray-600">Dedicated to maintaining law and order, ensuring public safety, and serving the community with integrity and professionalism.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- IT Professional -->
+                <div class="timeline-item">
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-laptop-code text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800 mb-1">IT Professional</h4>
+                                <p class="text-blue-600 font-medium mb-2">Technology Specialist</p>
+                                <p class="text-gray-600">Providing IT solutions, managing digital platforms, and leveraging technology to enhance operational efficiency in professional settings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- District Coordinator -->
+                <div class="timeline-item">
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-users text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800 mb-1">Nepal Youth Council</h4>
+                                <p class="text-blue-600 font-medium mb-2">District Coordinator - Sankhuwasabha Chapter</p>
+                                <p class="text-gray-600">Led youth initiatives, organized community programs, and represented the council at district level activities and meetings.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- District Child Club Network -->
+                <div class="timeline-item">
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-child text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800 mb-1">District Child Club Network</h4>
+                                <p class="text-blue-600 font-medium mb-2">Former Member (2 Years) - Sankhuwasabha</p>
+                                <p class="text-gray-600">Actively participated in child rights advocacy, organized awareness programs, and contributed to network activities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- NGO & Radio Work -->
+                <div class="timeline-item">
+                    <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow">
+                        <div class="flex items-start">
+                            <div class="bg-blue-600 text-white p-3 rounded-full mr-4">
+                                <i class="fas fa-microphone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-xl text-gray-800 mb-1">Radio & NGO Sector</h4>
+                                <p class="text-blue-600 font-medium mb-2">Various Roles</p>
+                                <p class="text-gray-600">Gained experience in accounting management, data entry, filing, project management, and news production while working with radio stations and NGOs.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50/80 backdrop-blur-sm relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-16 text-gray-800 section-title">
+                Get In Touch
+            </h2>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Contact Information</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-start bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition duration-300 glow">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4 text-blue-600">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Address</h4>
+                                <p class="text-gray-600">Dharmadevi Municipality - 6, Sankhuwasabha (Permanent)</p>
+                                <p class="text-gray-600">Sundarharaincha, Biratchowk, Morang (Temporary)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition duration-300 glow">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4 text-blue-600">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Phone</h4>
+                                <p class="text-gray-600">+977 9812308668</p>
+                                <p class="text-gray-600">+977 9867813242</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start bg-white p-5 rounded-xl shadow-sm hover:shadow-md transition duration-300 glow">
+                            <div class="bg-blue-100 p-3 rounded-full mr-4 text-blue-600">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Email</h4>
+                                <p class="text-gray-600">karkimahesh323@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">Connect With Me</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="bg-blue-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-700 transition duration-300 glow">
+                                <i class="fab fa-facebook-f text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-blue-400 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-500 transition duration-300 glow">
+                                <i class="fab fa-twitter text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-gradient-to-r from-purple-600 to-pink-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:from-purple-700 hover:to-pink-700 transition duration-300 glow">
+                                <i class="fab fa-instagram text-xl"></i>
+                            </a>
+                            <a href="#" class="bg-blue-700 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg hover:bg-blue-800 transition duration-300 glow">
+                                <i class="fab fa-linkedin-in text-xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Send Me a Message</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-gray-700 mb-2 font-medium">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 mb-2 font-medium">Your Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2 font-medium">Your Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition duration-300"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300 w-full shadow-lg btn-hover flex items-center justify-center">
+                            <i class="fas fa-paper-plane mr-2"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute bottom-0 right-0 w-64 h-64 rounded-full bg-blue-400/10 blur-xl animate-pulse"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <div class="text-3xl font-bold mb-2 flex items-center justify-center md:justify-start">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white mr-3">MK</div>
+                        Mahesh Karki
+                    </div>
+                    <p class="text-gray-400">Nepal Police (Assistant Sub-Inspector) & IT Professional</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="#home" class="text-gray-400 hover:text-white transition duration-300 font-medium">Home</a>
+                    <a href="#about" class="text-gray-400 hover:text-white transition duration-300 font-medium">About</a>
+                    <a href="#skills" class="text-gray-400 hover:text-white transition duration-300 font-medium">Skills</a>
+                    <a href="#experience" class="text-gray-400 hover:text-white transition duration-300 font-medium">Experience</a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition duration-300 font-medium">Contact</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; <span id="currentYear"></span> Mahesh Karki. All rights reserved.</p>
+            </div>
+        </div>
+        
+        <!-- Floating Elements -->
+        <div class="absolute top-0 left-0 w-32 h-32 rounded-full bg-blue-600/10 blur-xl animate-pulse"></div>
+        <div class="absolute bottom-0 right-0 w-40 h-40 rounded-full bg-orange-600/10 blur-xl animate-pulse delay-300"></div>
+    </footer>
+
+    <!-- Floating Action Button -->
+    <div class="fixed bottom-8 right-8 z-50">
+        <a href="#home" class="floating bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:bg-blue-700 transition duration-300 glow">
+            <i class="fas fa-arrow-up text-xl"></i>
+        </a>
+    </div>
+
+    <!-- Confetti Celebration -->
+    <canvas id="confetti" class="fixed top-0 left-0 w-full h-full pointer-events-none z-40" style="display: none;"></canvas>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Animate sections when they come into view
+        const animateOnScroll = () => {
+            const sections = document.querySelectorAll('section');
+            const sectionTitles = document.querySelectorAll('.section-title');
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionHeight = section.getBoundingClientRect().height;
+                const windowHeight = window.innerHeight;
+                
+                if (sectionTop < windowHeight - 100) {
+                    section.querySelector('.section-title')?.classList.add('active');
+                    
+                    if (section.id === 'experience') {
+                        timelineItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('active');
+                            }, index * 200);
+                        });
+                    }
+                }
+            });
+        };
+        
+        // Run on initial load
+        animateOnScroll();
+        
+        // Run on scroll
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+                
+                // Update active nav link
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active-nav');
+                });
+                this.classList.add('active-nav');
+            });
+        });
+        
+        // Highlight active navigation based on scroll position
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 300) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active-nav');
+                }
+            });
+        });
+        
+        // Create floating particles
+        const createParticles = () => {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 20;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 5px and 15px
+                const size = Math.random() * 10 + 5;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.5 + 0.1;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 20 + 10;
+                const delay = Math.random() * 10;
+                particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        };
+        
+        // Create confetti effect
+        const setupConfetti = () => {
+            const canvas = document.getElementById('confetti');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            let particles = [];
+            const particleCount = 150;
+            
+            // Particle constructor
+            function Particle() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.diameter = Math.random() * 10 + 5;
+                this.speed = Math.random() * 3 + 1;
+                this.color = `hsl(${Math.random() * 60 + 190}, 100%, 50%)`;
+                this.tilt = Math.random() * 10 - 10;
+                this.tiltAngle = Math.random() * 0.1;
+            }
+            
+            // Draw particles
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                for (let i = 0; i < particles.length; i++) {
+                    const p = particles[i];
+                    
+                    ctx.beginPath();
+                    ctx.lineWidth = p.diameter;
+                    ctx.strokeStyle = p.color;
+                    ctx.moveTo(p.x + p.tilt + p.diameter / 2, p.y);
+                    ctx.lineTo(p.x + p.tilt, p.y + p.tilt + p.diameter / 2);
+                    ctx.stroke();
+                    
+                    p.tiltAngle += 0.1;
+                    p.y += p.speed;
+                    p.tilt = Math.sin(p.tiltAngle) * 15;
+                    
+                    if (p.y > canvas.height) {
+                        particles.splice(i, 1);
+                        i--;
+                    }
+                }
+                
+                if (particles.length < particleCount) {
+                    particles.push(new Particle());
+                }
+                
+                requestAnimationFrame(draw);
+            }
+            
+            // Start confetti
+            function startConfetti() {
+                canvas.style.display = 'block';
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+                draw();
+                
+                setTimeout(() => {
+                    canvas.style.display = 'none';
+                }, 3000);
+            }
+            
+            // Trigger confetti on contact form submission
+            const contactForm = document.querySelector('form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    startConfetti();
+                    
+                    // Show success message
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+        };
+        
+        // Initialize on load
+        window.addEventListener('load', () => {
+            createParticles();
+            setupConfetti();
+        });
+        
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            const canvas = document.getElementById('confetti');
+            if (canvas) {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+        });
+    </script>
+</body>
+</html>
