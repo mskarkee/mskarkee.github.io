@@ -955,6 +955,18 @@
                 canvas.height = window.innerHeight;
             }
         });
+        // Disable right-click
+        document.addEventListener('contextmenu', function (e) {e.preventDefault();
+    });
+
+        // Disable text selection
+        document.addEventListener('selectstart', function (e) {e.preventDefault();
+    });
+
+        // Disable Ctrl+C
+        document.addEventListener('copy', function (e) {e.preventDefault();
+        alert('Copying is disabled on this website.');
+    });
     </script>
 </body>
 </html>
