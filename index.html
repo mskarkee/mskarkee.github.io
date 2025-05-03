@@ -943,20 +943,22 @@
         alert('Copying is disabled on this website.');
     });
         // For Date and Time Function    added ms
-function updateDateTime() {
+    function updateDateTime() {
         const dateTimeElement = document.getElementById('datetime-display');
         // Check if the element exists
         if (dateTimeElement) {
             const now = new Date();
-            // Format the date and time (adjust format as needed)
+            // Format the date and time - ADDED weekday and year options
             const formattedDateTime = now.toLocaleString('en-US', {
-                // year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: 'numeric',
-                minute: '2-digit',
-                // second: '2-digit', // Remove seconds if you want it truly static-looking
+                weekday: 'long',   // Options: 'long', 'short', 'narrow'
+                year: 'numeric',   // Options: 'numeric', '2-digit'
+                month: 'short',    // Options: 'numeric', '2-digit', 'long', 'short', 'narrow'
+                day: 'numeric',    // Options: 'numeric', '2-digit'
+                hour: 'numeric',   // Options: 'numeric', '2-digit'
+                minute: '2-digit', // Options: 'numeric', '2-digit'
                 hour12: true
+                // Removed seconds for static display:
+                // second: '2-digit'
             });
             dateTimeElement.textContent = formattedDateTime;
         }
@@ -964,7 +966,7 @@ function updateDateTime() {
 
     // Update the date/time ONLY once when the page loads
     updateDateTime();
-        
+  
     </script>
 </body>
 </html>
