@@ -943,31 +943,27 @@
         alert('Copying is disabled on this website.');
     });
         // For Date and Time Function    added ms
-            function updateDateTime() {
+function updateDateTime() {
         const dateTimeElement = document.getElementById('datetime-display');
-        // Check if the element exists (it won't on mobile view due to 'hidden')
+        // Check if the element exists
         if (dateTimeElement) {
             const now = new Date();
             // Format the date and time (adjust format as needed)
-            // Example: "Oct 26, 2023, 10:45:30 AM" (locale dependent)
             const formattedDateTime = now.toLocaleString('en-US', {
-                // year: 'numeric', // Uncomment if you want the year
+                // year: 'numeric',
                 month: 'short',
                 day: 'numeric',
                 hour: 'numeric',
                 minute: '2-digit',
-                second: '2-digit',
+                // second: '2-digit', // Remove seconds if you want it truly static-looking
                 hour12: true
             });
             dateTimeElement.textContent = formattedDateTime;
         }
     }
 
-    // Update the date/time immediately when the page loads
+    // Update the date/time ONLY once when the page loads
     updateDateTime();
-
-    // Update the date/time every second (1000 milliseconds)
-    setInterval(updateDateTime, 1000);
         
     </script>
 </body>
