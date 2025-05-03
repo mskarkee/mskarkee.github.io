@@ -284,6 +284,7 @@
                     <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">Skills</a>
                     <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">Experience</a>
                     <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">Contact</a>
+                    <div id="datetime-display" class="text-sm text-gray-600 font-medium whitespace-nowrap">                 <!-- added ms -->
                 </div>
                 <div class="md:hidden">
                     <button id="menuBtn" class="text-gray-700 focus:outline-none">
@@ -941,6 +942,33 @@
         document.addEventListener('copy', function (e) {e.preventDefault();
         alert('Copying is disabled on this website.');
     });
+        // For Date and Time Function    added ms
+            function updateDateTime() {
+        const dateTimeElement = document.getElementById('datetime-display');
+        // Check if the element exists (it won't on mobile view due to 'hidden')
+        if (dateTimeElement) {
+            const now = new Date();
+            // Format the date and time (adjust format as needed)
+            // Example: "Oct 26, 2023, 10:45:30 AM" (locale dependent)
+            const formattedDateTime = now.toLocaleString('en-US', {
+                // year: 'numeric', // Uncomment if you want the year
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true
+            });
+            dateTimeElement.textContent = formattedDateTime;
+        }
+    }
+
+    // Update the date/time immediately when the page loads
+    updateDateTime();
+
+    // Update the date/time every second (1000 milliseconds)
+    setInterval(updateDateTime, 1000);
+        
     </script>
 </body>
 </html>
