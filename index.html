@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mahesh Karki</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="favicon.png">                   <!--Favicon Icon of Tab-->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -285,8 +285,8 @@
                     <a href="#skills" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">Skills</a>
                     <a href="#experience" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">Experience</a>
                     <a href="#contact" class="nav-link text-gray-700 hover:text-blue-600 font-medium relative">Contact</a>
-                    <div id="datetime-display" class="text-sm text-gray-600 font-medium whitespace-nowrap border-2 border-black px-2 py-1 ml-auto">                 <!-- added ms -->
-                    <button id="theme-toggle">🌙 Dark Mode</button>     <!--added ms --->
+                    <div id="datetime-display" class="text-sm text-gray-600 font-medium whitespace-nowrap border-2 border-black px-2 py-1 ml-auto">   <!--Date Time Display-->               <!-- added ms -->
+                    <button id="theme-toggle">🌙 Dark Mode</button>     <!--Dark Mode Button --->
 
                 </div>
                 <div class="md:hidden">
@@ -519,8 +519,6 @@
                     </div>
                 </div>
                 
-
-                
                 <!-- District Coordinator -->
                 <div class="timeline-item">
                     <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow">
@@ -537,15 +535,12 @@
                     </div>
                 </div>
                 
-
-                
                 <!--- Accounting Work -->
                 <div class="timeline-item">
                     <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 glow">
                         <div class="flex items-start">
                             <div class="bg-blue-600 text-white p-3 rounded-full mr-4">
                                 <i class="fas fa-user text-xl"></i>
-
                             </div>
                             <div>
                                 <h4 class="font-bold text-xl text-gray-800 mb-1">Accounting Sector</h4>
@@ -587,12 +582,11 @@
                         </div>
                     </div>
                 </div>
-
-                
             </div>
         </div>
     </section>
 
+                
     <!-- Contact Section -->
     <section id="contact" class="py-20 bg-gray-50/80 backdrop-blur-sm relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -933,6 +927,9 @@
                 canvas.height = window.innerHeight;
             }
         });
+
+//Disable Copy from the Site:
+        
         // Disable right-click
         document.addEventListener('contextmenu', function (e) {e.preventDefault();
     });
@@ -945,7 +942,9 @@
         document.addEventListener('copy', function (e) {e.preventDefault();
         alert('Copying is disabled on this website.');
     });
-        // For Date and Time Function    added ms
+
+        
+// For Date and Time Adding Function    
     function updateDateTime() {
         const dateTimeElement = document.getElementById('datetime-display');
         // Check if the element exists
@@ -966,10 +965,11 @@
             dateTimeElement.textContent = formattedDateTime;
         }
     }
-
     // Update the date/time ONLY once when the page loads
     updateDateTime();
-  
+
+
+    
     </script>
 </body>
 </html>
