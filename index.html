@@ -101,6 +101,15 @@
         .glow:hover {
             box-shadow: 0 0 25px rgba(37, 99, 235, 0.8);
         }
+/*added ho*/
+        .social-icon:hover {
+            animation: bounce 0.5s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
         
         /* Custom Scrollbar */
         ::-webkit-scrollbar {
@@ -125,6 +134,7 @@
             perspective: 1000px;
             box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
             transition: all 0.5s ease;
+            cursor: pointer; /* Added */
         }
         
         .profile-frame::before {
@@ -146,7 +156,11 @@
         
         .profile-frame:hover {
             transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+            /* Add glow effect while keeping existing transform */
+            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2), 
+                        0 0 30px rgba(59, 130, 246, 0.5); /* Added glow */
         }
+        
         
         /* Skill Badge Animation */
         .skill-badge {
@@ -263,29 +277,22 @@
             z-index: -1;
         }
 
-        
-/* dark mode styles */    
-            @media (prefers-color-scheme: dark) {
-                /* Your dark mode styles */
-                body {
-                    background-color: #0f172a;
-                    color: #f8fafc;
-                }
-                
-                /* Add other element-specific dark styles */
-                .bg-white {
-                    background-color: #1e293b !important;
-                }
-                
-                .text-gray-800 {
-                    color: #f8fafc !important;
-                }
-            }
-
+        .profile-frame:hover {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+            transform: scale(1.02);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
         
     </style>
 </head>
 <body>
+        <!-- Add this FIRST -->
+    <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-blue-500 z-50" style="width: 0%;"></div>      <!--added deepseek-->
+    
     <!-- Animated Background -->
     <div class="animated-bg"></div>
     
@@ -331,7 +338,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center">
             <div class="md:w-1/2 mb-12 md:mb-0 relative z-10">
                 <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-gray-800 leading-tight">
-                    Hi<span class="wave">👋</span>, meet <span class="text-blue-600">M.Karki</span>
+                    Hi<span class="wave">👋</span>, meet 
+                    <span class="typewriter text-blue-600"></span>
                 </h1>
                 <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-gray-700">
                     <span class="bg-blue-600 text-white px-3 py-1 rounded-full text-sm md:text-base">IT Professional</span>
@@ -368,7 +376,7 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-20 bg-white/80 backdrop-blur-sm relative overflow-hidden">
+    <section id="about" class="py-20 bg-white/80 backdrop-blur-sm relative overflow-hidden glass-panel">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-center mb-16 text-gray-800 section-title">
                 About Me
@@ -417,9 +425,9 @@
     <!-- Skills Section -->
     <section id="skills" class="py-20 bg-gray-50/80 backdrop-blur-sm relative overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-16 text-gray-800 section-title">
+            <h2 class="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
                 My Skills
-            </h2>
+            </h2>                        <!--edited ho-->
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Creative Skills -->
@@ -608,7 +616,7 @@
 
                 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gray-50/80 backdrop-blur-sm relative overflow-hidden">
+    <section id="contact" class="py-20 bg-gray-50/80 backdrop-blur-sm relative overflow-hidden glass-panel">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-3xl font-bold text-center mb-16 text-gray-800 section-title">
                 Get In Touch
@@ -730,7 +738,7 @@
 
     <!-- Floating Action Button -->
     <div class="fixed bottom-8 right-8 z-50">
-        <a href="#home" class="floating bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:bg-blue-700 transition duration-300 glow">
+        <a href="#home" class="floating bg-blue-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-xl hover:bg-blue-700 transition-all hover:rotate-12 glow">
             <i class="fas fa-arrow-up text-xl"></i>
         </a>
     </div>
@@ -987,8 +995,26 @@
     }
     // to Update the date/time ONLY once when the page loads
     updateDateTime();
+
         
-                
+// Typewriter Effect
+        const typewriterText = "M.Karki";
+        let charIndex = 0;
+        
+        function typeWriter() {
+            if (charIndex < typewriterText.length) {
+                document.querySelector(".typewriter").textContent += typewriterText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 150);
+            }
+        }
+        typeWriter();
+        
+// Scroll Progress
+        window.addEventListener('scroll', () => {
+            const progress = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scroll-progress').style.width = `${progress}%`;
+        });
         
     </script>
 </body>
