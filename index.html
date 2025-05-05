@@ -263,15 +263,25 @@
             z-index: -1;
         }
 
+        
 /* dark mode styles */    
             @media (prefers-color-scheme: dark) {
-            /* Your existing dark mode styles */
-            body {
-                background-color: #0f172a;
-                color: #f8fafc;
+                /* Your dark mode styles */
+                body {
+                    background-color: #0f172a;
+                    color: #f8fafc;
+                }
+                
+                /* Add other element-specific dark styles */
+                .bg-white {
+                    background-color: #1e293b !important;
+                }
+                
+                .text-gray-800 {
+                    color: #f8fafc !important;
+                }
             }
-        }
-        
+
         
     </style>
 </head>
